@@ -13,7 +13,8 @@ retrofit="2.9.0"
 kotest="5.4.1"
 mockk="1.12.5"
 kotlinTest="1.7.10"
-micronautTest="3.5.0"
+micronautTest="3.9.2"
+restAssured="3.0.0"
 
 [libraries]
 logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback"}
@@ -39,7 +40,8 @@ micronaut-runtime = { module = "io.micronaut:micronaut-runtime", version.ref = "
 micronaut-validation = { module = "io.micronaut:micronaut-validation", version.ref = "micronaut"}
 
 micronaut-http-client = { module = "io.micronaut:micronaut-http-client", version.ref = "micronautTest"}
-micronaut-test = { module = "io.micronaut.test:micronaut-test-junit5", version.ref = "micronautTest"}
+micronaut-test = { module = "io.micronaut.test:micronaut-test-kotest5", version.ref = "micronautTest"}
+rest-assured = { module = "io.rest-assured:rest-assured", version.ref = "restAssured"}
 
 mockk = { module = "io.mockk:mockk", version.ref = "mockk"}
 kotest-assertions = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest"}

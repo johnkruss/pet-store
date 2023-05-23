@@ -1,8 +1,8 @@
 rootProject.name="pet-store"
 
 include 'pet-store-api',
-        'pet-store-client',
         'pet-store-repository',
-        'pet-store-service'
+        'pet-store-service',
+        'pet-store-test-common'
 
 enableFeaturePreview('VERSION_CATALOGS')

@@ -9,10 +9,7 @@ import com.chewy.osn.response.GetPetResponse
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.shouldBe
-import io.mockk.confirmVerified
-import io.mockk.every
-import io.mockk.mockk
-import io.mockk.verify
+import io.mockk.*
 
 class PetServiceTest: FreeSpec ({
 
@@ -138,5 +135,48 @@ class PetServiceTest: FreeSpec ({
         response.species shouldBe species
         response.names shouldBe names
         response.totalCuteness shouldBe 999
+    }
+
+    "Successfully create a pet" {
+        //setup
+        val petName = "Woodstock"
+        val species = Species.BIRD
+        val cuteness = 17
+
+        val expectedPet = Pet(petName, species, cuteness)
+
+        every { petRepository.getPet(species, petName) } returns null
+        justRun { petRepository.writePet(expectedPet) }
+
+        //execution
+        petService.createPet(species, petName, cuteness)
+
+        //assertions
+        verify(exactly = 1) { petRepository.getPet(species, petName) }
+        verify(exactly = 1) { petRepository.writePet(expectedPet) }
+        confirmVerified(petRepository)
+    }
+
+    "An exception is thrown when a pet already exists" {
+        //setup
+        val petName = "Woodstock"
+        val species = Species.BIRD
+        val cuteness = 17
+
+        val existingPet = generatePet(name = petName, species = species, cuteness = cuteness)
+
+        every { petRepository.getPet(species, petName) } returns existingPet
+
+        //execution
+        val thrownException = shouldThrow<PetException> {
+            petService.createPet(species, petName, cuteness)
+        }
+
+        //assertions
+        verify(exactly = 1) { petRepository.getPet(species, petName) }
+        confirmVerified(petRepository)
+
+        thrownException.code shouldBe 409
+        thrownException.message shouldBe "We already have a BIRD that's named Woodstock"
     }
 })

@@ -1,4 +1,4 @@
-package com.chewy.osn.repository
+package com.chewy.osn
 
 import software.amazon.awssdk.regions.Region
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient

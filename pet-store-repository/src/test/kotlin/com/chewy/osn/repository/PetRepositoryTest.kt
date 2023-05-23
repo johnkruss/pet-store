@@ -1,6 +1,8 @@
 package com.chewy.osn.repository
 
+import com.chewy.osn.TestRepositoryInitializer
 import com.chewy.osn.domain.Species
+import com.chewy.osn.generatePet
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.shouldBe
 import java.util.*

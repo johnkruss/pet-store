@@ -12,6 +12,7 @@ dependencies {
     implementation(libs.lombok)
     implementation(libs.dynamodb.enhanced)
 
+    testImplementation(project(":pet-store-test-common"))
     testImplementation(libs.kotlin.test.junit)
     testImplementation(libs.kotest.runner)
 }
