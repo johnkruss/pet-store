@@ -1,0 +1,9 @@
+plugins {
+//    alias(libs.plugins.shadow)
+    id 'java'
+}
+
+subprojects {
+    group = 'com.chewy.osn'
+    sourceCompatibility = '17'
+}

@@ -1,0 +1,51 @@
+[versions]
+lombok="1.18.24"
+logback="1.2.3"
+slf4j="1.7.36"
+logbackEncoder="7.0.1"
+jackson="2.12.2"
+dynamo="2.17.5"
+micronaut="3.5.3"
+micronautPlugin="3.4.1"
+retrofit="2.9.0"
+
+kotest="5.4.1"
+mockk="1.12.5"
+kotlinTest="1.7.10"
+micronautTest="3.5.0"
+
+[libraries]
+logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback"}
+logback-encoder = { module = "net.logstash.logback:logstash-logback-encoder", version.ref = "logbackEncoder"}
+slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j"}
+
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit"}
+retrofit-converter-jackson = { module = "com.squareup.retrofit2:converter-jackson", version.ref = "retrofit"}
+
+jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson"}
+jackson-core = { module = "com.fasterxml.jackson.core:jackson-core", version.ref = "jackson"}
+jackson-datatype-jsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version.ref = "jackson"}
+lombok = { module = "org.projectlombok:lombok", version.ref = "lombok"}
+
+dynamodb-enhanced = { module = "software.amazon.awssdk:dynamodb-enhanced", version.ref = "dynamo"}
+
+micronaut-inject-java = { module = "io.micronaut:micronaut-inject-java", version.ref = "micronaut"}
+micronaut-core = { module = "io.micronaut:micronaut-core", version.ref = "micronaut"}
+micronaut-runtime = { module = "io.micronaut:micronaut-runtime", version.ref = "micronaut"}
+micronaut-validation = { module = "io.micronaut:micronaut-validation", version.ref = "micronaut"}
+
+micronaut-http-client = { module = "io.micronaut:micronaut-http-client", version.ref = "micronautTest"}
+micronaut-test = { module = "io.micronaut.test:micronaut-test-junit5", version.ref = "micronautTest"}
+
+mockk = { module = "io.mockk:mockk", version.ref = "mockk"}
+kotest-assertions = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest"}
+kotest-runner = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest"}
+kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlinTest"}
+
+[plugins]
+shadow = { id = "com.github.johnrengelman.shadow", version.ref = "shadow"}
+nebula-release = { id = "nebula.release", version.ref = "nebulaRelease" }
+artifactory = { id = "com.jfrog.artifactory", version.ref = "artifactory" }
+sonarqube = { id = "org.sonarqube", version.ref = "sonarqube" }
+micronaut-minimal-application = { id = "io.micronaut.minimal.application", version.ref = "micronautPlugin" }
+micronaut-docker = { id = "io.micronaut.docker", version.ref = "micronautPlugin" }
