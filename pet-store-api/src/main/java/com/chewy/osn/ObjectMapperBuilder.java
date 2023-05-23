@@ -18,6 +18,7 @@ public class ObjectMapperBuilder {
                 .setSerializationInclusion(JsonInclude.Include.NON_NULL)
                 .enable(SerializationFeature.INDENT_OUTPUT)
                 .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
+                .setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE)
                 .registerModule(new JavaTimeModule())
                 .registerModule(new Jdk8Module())
                 .registerModule(new KotlinModule());

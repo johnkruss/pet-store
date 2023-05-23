@@ -11,7 +11,6 @@ import jakarta.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class PetService {
 
@@ -56,5 +55,15 @@ public class PetService {
             }
         }
         return pets;
+    }
+
+    public void createPet(Species species, String name, Integer cuteness) {
+        Pet existingPet = petRepository.getPet(species, name);
+
+        if (existingPet != null) {
+            throw new PetException(409, "We already have a " + species + " that's named " + name);
+        }
+
+        petRepository.writePet(new Pet(name, species, cuteness));
     }
 }
