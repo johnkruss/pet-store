@@ -30,22 +30,11 @@ public class PetRepository {
                 .build();
         return table.getItem(key);
     }
-
-    public List<Pet> getPets(Species species) {
-        QueryConditional queryConditional = QueryConditional
-                .keyEqualTo(Key.builder()
-                        .partitionValue(species.toString())
-                        .build());
-
-        return table.query(queryConditional)
-                .items().stream()
-                .collect(Collectors.toList());
-    }
     public void writePet(Pet pet) {
         table.putItem(pet);
     }
 
-    public void deleteItem(Species species, String name) {
+    public void adoptPet(Species species, String name) {
         Key key = Key.builder()
                 .partitionValue(species.toString())
                 .sortValue(name)

@@ -11,7 +11,7 @@ class PetRepositoryTest: FreeSpec({
     lateinit var config: DynamoConfig
 
     beforeTest {
-        config = DynamoConfig("http://localhost:4566", "ledger_table")
+        config = DynamoConfig("http://localhost:4566", "pet_table")
 
         TestRepositoryInitializer()
                 .withServiceUrl(config.serviceUrl)
@@ -47,21 +47,22 @@ class PetRepositoryTest: FreeSpec({
         returned shouldBe null
     }
 
-    "Get back a list of pets for a given species" {
+    "No pet is found after being adopted(deleted)" {
         //setup
-        val allTheCats  = listOf(
-            generatePet(species = Species.CAT),
-            generatePet(species = Species.CAT),
-            generatePet(species = Species.CAT),
-            generatePet(species = Species.CAT)
-        )
-
-        allTheCats.forEach { petRepository.writePet(it) }
+        val pet = generatePet()
+        petRepository.writePet(pet)
 
         //execution
-        val returned = petRepository.getPets(Species.CAT)
+        val doesExist = petRepository.getPet(pet.species, pet.name)
 
         //assertion
-        returned shouldBe allTheCats
+        doesExist shouldBe pet
+
+        //execution
+        petRepository.adoptPet(pet.species, pet.name)
+        val doesNotExist = petRepository.getPet(pet.species, pet.name)
+
+        //assertion
+        doesNotExist shouldBe null
     }
 })
