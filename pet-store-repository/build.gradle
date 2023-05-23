@@ -1,0 +1,14 @@
+plugins {
+    id('java')
+    alias(libs.plugins.kotlin)
+}
+
+dependencies {
+    implementation(project(":pet-store-api"))
+    annotationProcessor(libs.lombok)
+    implementation(libs.lombok)
+    implementation(libs.dynamodb.enhanced)
+
+    testImplementation(libs.kotlin.test.junit)
+    testImplementation(libs.kotest.runner)
+}

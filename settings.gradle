@@ -1,39 +1,8 @@
-pluginManagement {
-    repositories {
-        maven {
-            url "${artifactory_server}/plugins-release"
-            credentials {
-                username = artifactory_user
-                password = artifactory_password
-            }
-        }
-    }
-}
-
 rootProject.name="pet-store"
 
 include 'pet-store-api',
         'pet-store-client',
+        'pet-store-repository',
         'pet-store-service'
-
-dependencyResolutionManagement {
-    repositories {
-        mavenLocal()
-        maven {
-            credentials {
-                username = artifactory_user
-                password = artifactory_password
-            }
-            url "${artifactory_server}/libs-release"
-        }
-        maven {
-            url "${artifactory_server}/plugins-release"
-            credentials {
-                username = artifactory_user
-                password = artifactory_password
-            }
-        }
-    }
-}
 
 enableFeaturePreview('VERSION_CATALOGS')

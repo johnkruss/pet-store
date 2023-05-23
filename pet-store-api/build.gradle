@@ -1,0 +1,29 @@
+plugins {
+    id 'java-library'
+    alias(libs.plugins.kotlin)
+}
+
+dependencies {
+    annotationProcessor libs.lombok
+
+    implementation libs.lombok
+    implementation libs.jackson.databind
+    implementation libs.jackson.core
+    implementation libs.jackson.datatype.jsr310
+    implementation libs.jackson.datatype.jdk8
+    implementation libs.jackson.module.kotlin
+
+
+    testImplementation libs.kotlin.test.junit
+    testImplementation libs.kotest.runner
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+java {
+    sourceCompatibility = JavaVersion.toVersion("17")
+}
+

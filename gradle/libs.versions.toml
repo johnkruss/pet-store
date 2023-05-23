@@ -7,6 +7,7 @@ jackson="2.12.2"
 dynamo="2.17.5"
 micronaut="3.5.3"
 micronautPlugin="3.4.1"
+kotlin="1.7.10"
 retrofit="2.9.0"
 
 kotest="5.4.1"
@@ -25,6 +26,9 @@ retrofit-converter-jackson = { module = "com.squareup.retrofit2:converter-jackso
 jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson"}
 jackson-core = { module = "com.fasterxml.jackson.core:jackson-core", version.ref = "jackson"}
 jackson-datatype-jsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version.ref = "jackson"}
+jackson-datatype-jdk8 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jdk8", version.ref = "jackson"}
+jackson-module-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson"}
+
 lombok = { module = "org.projectlombok:lombok", version.ref = "lombok"}
 
 dynamodb-enhanced = { module = "software.amazon.awssdk:dynamodb-enhanced", version.ref = "dynamo"}
@@ -43,9 +47,6 @@ kotest-runner = { module = "io.kotest:kotest-runner-junit5", version.ref = "kote
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlinTest"}
 
 [plugins]
-shadow = { id = "com.github.johnrengelman.shadow", version.ref = "shadow"}
-nebula-release = { id = "nebula.release", version.ref = "nebulaRelease" }
-artifactory = { id = "com.jfrog.artifactory", version.ref = "artifactory" }
-sonarqube = { id = "org.sonarqube", version.ref = "sonarqube" }
+kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 micronaut-minimal-application = { id = "io.micronaut.minimal.application", version.ref = "micronautPlugin" }
 micronaut-docker = { id = "io.micronaut.docker", version.ref = "micronautPlugin" }
