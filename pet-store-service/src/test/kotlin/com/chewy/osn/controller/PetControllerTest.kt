@@ -8,12 +8,14 @@ import com.chewy.osn.generatePet
 import com.chewy.osn.request.CreatePetRequest
 import com.chewy.osn.response.CutenessResponse
 import com.chewy.osn.response.GetPetResponse
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.shouldBe
 import io.micronaut.http.HttpRequest
 import io.micronaut.http.HttpStatus
 import io.micronaut.http.client.BlockingHttpClient
 import io.micronaut.http.client.HttpClient
+import io.micronaut.http.client.exceptions.HttpClientResponseException
 import io.micronaut.runtime.server.EmbeddedServer
 import io.micronaut.test.extensions.kotest5.annotation.MicronautTest
 import java.util.*
@@ -58,6 +60,29 @@ class PetControllerTest(val server: EmbeddedServer, val config: RepositoryConfig
         //assertions
         petResponse.status() shouldBe HttpStatus.OK
         petResponse.body().cuteness shouldBe 104
+    }
+
+    "Not allowed to double create a pet!" {
+        //setup
+        val species = Species.CAT
+        val name = UUID.randomUUID().toString()
+        val cuteness = 104
+        val request = mapper.writeValueAsString(CreatePetRequest(name, cuteness))
+
+        //execution
+        val response = client.exchange(HttpRequest.POST("/v1/species/$species", request), Unit.javaClass)
+
+        //assertions
+        response.status() shouldBe HttpStatus.OK
+
+        //execution
+        val exception = shouldThrow<HttpClientResponseException> {
+            client.exchange(HttpRequest.POST("/v1/species/$species", request), Unit.javaClass)
+        }
+
+        //assertions
+        exception.status shouldBe HttpStatus.CONFLICT
+        exception.message shouldBe "We already have a CAT that's named $name"
     }
 
     "Add up all the cute!" {
