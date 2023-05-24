@@ -4,19 +4,25 @@ import com.chewy.osn.ObjectMapperBuilder
 import com.chewy.osn.TestRepositoryInitializer
 import com.chewy.osn.config.RepositoryConfig
 import com.chewy.osn.domain.Species
+import com.chewy.osn.generatePet
 import com.chewy.osn.request.CreatePetRequest
+import com.chewy.osn.response.CutenessResponse
+import com.chewy.osn.response.GetPetResponse
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.shouldBe
 import io.micronaut.http.HttpRequest
+import io.micronaut.http.HttpStatus
 import io.micronaut.http.client.BlockingHttpClient
 import io.micronaut.http.client.HttpClient
 import io.micronaut.runtime.server.EmbeddedServer
 import io.micronaut.test.extensions.kotest5.annotation.MicronautTest
-import jakarta.inject.Inject
 import java.util.*
 
+//What type of test is this? Unit? No. Integration? Maybe? Functional? Sure I guess
+//It doesn't matter, it proves our app can spin up and our endpoints work
+
 @MicronautTest
-class PetControllerTest(@Inject val server: EmbeddedServer, val config: RepositoryConfig): FreeSpec({
+class PetControllerTest(val server: EmbeddedServer, val config: RepositoryConfig): FreeSpec({
 
     lateinit var client: BlockingHttpClient
     val mapper = ObjectMapperBuilder().build()
@@ -44,6 +50,37 @@ class PetControllerTest(@Inject val server: EmbeddedServer, val config: Reposito
         val response = client.exchange(HttpRequest.POST("/v1/species/$species", request), Unit.javaClass)
 
         //assertions
-        response.code() shouldBe 200
+        response.status() shouldBe HttpStatus.OK
+
+        //execution
+        val petResponse = client.exchange("/v1/species/$species/names/$name", GetPetResponse::class.java)
+
+        //assertions
+        petResponse.status() shouldBe HttpStatus.OK
+        petResponse.body().cuteness shouldBe 104
+    }
+
+    "Add up all the cute!" {
+        //setup
+        val pets = listOf(
+            generatePet(species = Species.DOG, cuteness = 10),
+            generatePet(species = Species.DOG, cuteness = 20),
+            generatePet(species = Species.DOG, cuteness = 0),
+            generatePet(species = Species.CAT, cuteness = 10)
+        )
+
+        val nameString = pets.map { it.name }.joinToString(",")
+
+        pets.forEach { pet ->
+            val request = mapper.writeValueAsString(CreatePetRequest(pet.name, pet.cuteness))
+            client.exchange(HttpRequest.POST("/v1/species/${pet.species}", request), Unit.javaClass)
+        }
+
+        //execution
+        val petResponse = client.exchange("/v1/species/${Species.DOG}?names=$nameString", CutenessResponse::class.java)
+
+        //assertions
+        petResponse.status() shouldBe HttpStatus.OK
+        petResponse.body().totalCuteness shouldBe 30
     }
 })

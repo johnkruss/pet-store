@@ -76,6 +76,7 @@ class PetServiceTest: FreeSpec ({
     }
 
     "Pets with null cuteness are ignored" {
+        //setup
         val pets = listOf(
             generatePet(cuteness = 123),
             generatePet(cuteness = null)
@@ -89,6 +90,7 @@ class PetServiceTest: FreeSpec ({
     }
 
     "Retrieve several pets, ignore nulls" {
+        //setup
         val species = Species.CAT
         val name1 = "Simba"
         val name2 = "Garfield"

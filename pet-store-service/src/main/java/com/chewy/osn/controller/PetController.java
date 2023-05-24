@@ -23,12 +23,13 @@ public class PetController {
     @Get("/names/{name}")
     public GetPetResponse getPet(@PathVariable("species") Species species,
                                  @PathVariable("name") String name) {
-        return petService.getPet(species, name);
+        GetPetResponse response = petService.getPet(species, name);
+        return response;
     }
 
-    @Get("{?list}")
+    @Get("{?names}")
     public CutenessResponse getCuteness(@PathVariable("species") Species species,
-                                        @QueryValue("list") List<String> names) {
+                                        @QueryValue("names") List<String> names) {
         return petService.getTotalCuteness(species, names);
     }
 
