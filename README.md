@@ -13,6 +13,7 @@ Project created with Java 17, Micronaut 3.5.3, Kotest 5.4.1, and of course docke
 To build/test - 
 
 First run `docker compose up -d` to pull and start up a container running localstack
+
 Localstack is a convenient, mostly open source, container based AWS emulator that provides a bunch of 
 convenient services to test against
 
