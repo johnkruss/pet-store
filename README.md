@@ -19,4 +19,4 @@ convenient services to test against
 
 From there simple run `./gradlew build` to see tests executed 
 
-Presentation created using ![Excalidraw](https://excalidraw.com/)
+Presentation created using [Excalidraw](https://excalidraw.com/)
