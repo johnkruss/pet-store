@@ -8,21 +8,16 @@ dynamo="2.17.5"
 micronaut="3.5.3"
 micronautPlugin="3.4.1"
 kotlin="1.7.10"
-retrofit="2.9.0"
 
 kotest="5.4.1"
 mockk="1.12.5"
 kotlinTest="1.7.10"
 micronautTest="3.9.2"
-restAssured="3.0.0"
 
 [libraries]
 logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback"}
 logback-encoder = { module = "net.logstash.logback:logstash-logback-encoder", version.ref = "logbackEncoder"}
 slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j"}
-
-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit"}
-retrofit-converter-jackson = { module = "com.squareup.retrofit2:converter-jackson", version.ref = "retrofit"}
 
 jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson"}
 jackson-core = { module = "com.fasterxml.jackson.core:jackson-core", version.ref = "jackson"}
@@ -41,7 +36,6 @@ micronaut-validation = { module = "io.micronaut:micronaut-validation", version.r
 
 micronaut-http-client = { module = "io.micronaut:micronaut-http-client", version.ref = "micronautTest"}
 micronaut-test = { module = "io.micronaut.test:micronaut-test-kotest5", version.ref = "micronautTest"}
-rest-assured = { module = "io.rest-assured:rest-assured", version.ref = "restAssured"}
 
 mockk = { module = "io.mockk:mockk", version.ref = "mockk"}
 kotest-assertions = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest"}
@@ -51,4 +45,3 @@ kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version
 [plugins]
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 micronaut-minimal-application = { id = "io.micronaut.minimal.application", version.ref = "micronautPlugin" }
-micronaut-docker = { id = "io.micronaut.docker", version.ref = "micronautPlugin" }

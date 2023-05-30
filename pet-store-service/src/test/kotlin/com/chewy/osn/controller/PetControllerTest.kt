@@ -23,6 +23,10 @@ import java.util.*
 //What type of test is this? Unit? No. Integration? Maybe? Functional? Sure I guess
 //It doesn't matter, it proves our app can spin up and our endpoints work
 
+//Bonus round - create a portable library based API client using a tool like Retrofit
+//Use it to test your endpoints, THEN publish it for other apps to consume
+//Now you have an API client you can confidently use in other places because you dogfood your own code during testing
+
 @MicronautTest
 class PetControllerTest(val server: EmbeddedServer, val config: RepositoryConfig): FreeSpec({
 
@@ -59,7 +63,7 @@ class PetControllerTest(val server: EmbeddedServer, val config: RepositoryConfig
 
         //assertions
         petResponse.status() shouldBe HttpStatus.OK
-        petResponse.body().cuteness shouldBe 104
+        petResponse.body()?.cuteness shouldBe 104
     }
 
     "Not allowed to double create a pet!" {
@@ -106,6 +110,6 @@ class PetControllerTest(val server: EmbeddedServer, val config: RepositoryConfig
 
         //assertions
         petResponse.status() shouldBe HttpStatus.OK
-        petResponse.body().totalCuteness shouldBe 30
+        petResponse.body()?.totalCuteness shouldBe 30
     }
 })

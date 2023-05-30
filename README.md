@@ -8,4 +8,6 @@
 
 A repo to demonstrate code structures and testing practices that can effectively document and demonstrate code
 
+Project created with Java 17, Micronaut 3.5.3, and Kotest 
+
 Presentation created using ![Excalidraw](https://excalidraw.com/)
