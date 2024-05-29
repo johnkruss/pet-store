@@ -48,6 +48,10 @@ test {
         showCauses = true
         showStackTraces = true
     }
+
+    environment 'AWS_ACCESS_KEY_ID', 'ACCESS_KEY'
+    environment 'AWS_SECRET_ACCESS_KEY', 'SECRET_KEY'
+    environment 'AWS_SESSION_TOKEN', 'TOKEN'
 }
 
 micronaut {
