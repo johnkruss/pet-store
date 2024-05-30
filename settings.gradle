@@ -1,8 +1,6 @@
 rootProject.name="pet-store"
 
 include 'pet-store-api',
-        'pet-store-repository',
+        'pet-store-dynamo-repository',
         'pet-store-service',
         'pet-store-test-common'
-
-enableFeaturePreview('VERSION_CATALOGS')

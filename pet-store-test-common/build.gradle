@@ -1,9 +1,0 @@
-plugins {
-    id('java')
-    alias(libs.plugins.kotlin)
-}
-
-dependencies {
-    implementation(project(":pet-store-api"))
-    implementation(libs.dynamodb.enhanced)
-}

@@ -2,13 +2,13 @@
 
 [![forthebadge](https://forthebadge.com/images/badges/powered-by-electricity.svg)](https://forthebadge.com)
 
-[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
-
 [![forthebadge](https://forthebadge.com/images/badges/made-with-crayons.svg)](https://forthebadge.com)
+
+![Built with ChatGPT](https://img.shields.io/badge/Built%20with-ChatGPT-blue?style=for-the-badge)
 
 A repo to demonstrate code structures and testing practices that can effectively document and demonstrate code
 
-Project created with Java 17, Micronaut 3.5.3, Kotest 5.4.1, and of course docker
+Project created with Kotlin, 2.0.0, Java 21, Micronaut 4.4.3, Kotest 5.9.0, and of course docker
 
 To build/test - 
 

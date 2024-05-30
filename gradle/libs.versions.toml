@@ -1,23 +1,25 @@
 [versions]
-lombok="1.18.24"
 logback="1.2.3"
 slf4j="1.7.36"
+yaml="2.2"
 logbackEncoder="7.0.1"
 jackson="2.12.2"
 dynamo="2.17.5"
-micronaut="3.5.3"
-micronautPlugin="3.4.1"
-kotlin="1.7.10"
+micronaut="4.4.3"
+micronautPlugin="4.4.0"
+kotlin="2.0.0"
+ksp="2.0.0-1.0.21"
+spotless="6.25.0"
 
-kotest="5.4.1"
+kotest="5.9.0"
 mockk="1.12.5"
-kotlinTest="1.7.10"
-micronautTest="3.9.2"
+micronautTest="4.3.0"
 
 [libraries]
 logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback"}
 logback-encoder = { module = "net.logstash.logback:logstash-logback-encoder", version.ref = "logbackEncoder"}
 slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j"}
+snakeyaml = { module = "org.yaml:snakeyaml", version.ref = "yaml"}
 
 jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson"}
 jackson-core = { module = "com.fasterxml.jackson.core:jackson-core", version.ref = "jackson"}
@@ -25,14 +27,13 @@ jackson-datatype-jsr310 = { module = "com.fasterxml.jackson.datatype:jackson-dat
 jackson-datatype-jdk8 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jdk8", version.ref = "jackson"}
 jackson-module-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson"}
 
-lombok = { module = "org.projectlombok:lombok", version.ref = "lombok"}
-
 dynamodb-enhanced = { module = "software.amazon.awssdk:dynamodb-enhanced", version.ref = "dynamo"}
 
 micronaut-inject-java = { module = "io.micronaut:micronaut-inject-java", version.ref = "micronaut"}
 micronaut-core = { module = "io.micronaut:micronaut-core", version.ref = "micronaut"}
 micronaut-runtime = { module = "io.micronaut:micronaut-runtime", version.ref = "micronaut"}
 micronaut-validation = { module = "io.micronaut:micronaut-validation", version.ref = "micronaut"}
+micronaut-jackson = { module = "io.micronaut:micronaut-jackson-databind", version.ref = "micronaut"}
 
 micronaut-http-client = { module = "io.micronaut:micronaut-http-client", version.ref = "micronautTest"}
 micronaut-test = { module = "io.micronaut.test:micronaut-test-kotest5", version.ref = "micronautTest"}
@@ -40,8 +41,9 @@ micronaut-test = { module = "io.micronaut.test:micronaut-test-kotest5", version.
 mockk = { module = "io.mockk:mockk", version.ref = "mockk"}
 kotest-assertions = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest"}
 kotest-runner = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest"}
-kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlinTest"}
 
 [plugins]
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 micronaut-minimal-application = { id = "io.micronaut.minimal.application", version.ref = "micronautPlugin" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
