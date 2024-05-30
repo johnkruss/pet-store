@@ -34,10 +34,10 @@ subprojects {
 
         testLogging {
             events = setOf(
-                    TestLogEvent.FAILED,
-                    TestLogEvent.PASSED,
-                    TestLogEvent.SKIPPED,
-                    TestLogEvent.STANDARD_OUT
+                TestLogEvent.FAILED,
+                TestLogEvent.PASSED,
+                TestLogEvent.SKIPPED,
+                TestLogEvent.STANDARD_OUT
             )
 
             exceptionFormat = TestExceptionFormat.FULL

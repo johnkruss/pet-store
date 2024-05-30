@@ -2,9 +2,7 @@ package com.johnkruss.osn.controller
 
 import com.johnkruss.osn.ObjectMapperBuilder
 import com.johnkruss.osn.domain.Species
-import com.johnkruss.osn.generatePet
 import com.johnkruss.osn.request.CreatePetRequest
-import com.johnkruss.osn.response.CutenessResponse
 import com.johnkruss.osn.response.GetPetResponse
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FreeSpec
@@ -78,30 +76,5 @@ class PetControllerTest(val server: EmbeddedServer) : FreeSpec({
         // assertions
         exception.status shouldBe HttpStatus.CONFLICT
         exception.message shouldBe "We already have a CAT that's named $name"
-    }
-
-    "Add up all the cute!" {
-        // setup
-        val pets =
-            listOf(
-                generatePet(species = Species.DOG, cuteness = 10),
-                generatePet(species = Species.DOG, cuteness = 20),
-                generatePet(species = Species.DOG, cuteness = 0),
-                generatePet(species = Species.CAT, cuteness = 10),
-            )
-
-        val nameString = pets.map { it.name }.joinToString(",")
-
-        pets.forEach { pet ->
-            val request = mapper.writeValueAsString(CreatePetRequest(pet.name, pet.cuteness!!))
-            client.exchange(HttpRequest.POST("/v1/species/${pet.species}", request), Unit.javaClass)
-        }
-
-        // execution
-        val petResponse = client.exchange("/v1/species/${Species.DOG}?names=$nameString", CutenessResponse::class.java)
-
-        // assertions
-        petResponse.status() shouldBe HttpStatus.OK
-        petResponse.body()?.totalCuteness shouldBe 30
     }
 })

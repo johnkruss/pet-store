@@ -7,6 +7,9 @@ plugins {
 dependencies {
     implementation(project(":pet-store-api"))
     implementation(project(":pet-store-dynamo-repository"))
+    implementation(libs.logback)
+    implementation(libs.logback.encoder)
+    implementation(libs.snakeyaml)
 
     implementation(libs.micronaut.jackson)
 
@@ -19,6 +22,7 @@ tasks.withType<Test> {
     environment("AWS_ACCESS_KEY_ID", "ACCESS_KEY")
     environment("AWS_SECRET_ACCESS_KEY", "SECRET_KEY")
     environment("AWS_SESSION_TOKEN", "TOKEN")
+    environment("AWS_REGION", "us-east-1")
 }
 
 application {

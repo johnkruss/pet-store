@@ -1,0 +1,29 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <providers>
+                <message/>
+                <nestedField>
+                    <throwableClassName>
+                        <fieldName>thrown</fieldName>
+                    </throwableClassName>
+                    <stacktrace>
+                        <fieldName>extended</fieldName>
+                        <throwableConverter class="net.logstash.logback.stacktrace.ShortenedThrowableConverter">
+                            <maxLength>131072</maxLength>
+                            <rootCauseFirst>true</rootCauseFirst>
+                        </throwableConverter>
+                    </stacktrace>
+                </nestedField>
+            </providers>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+    <logger name="com.example" level="DEBUG" additivity="false">
+        <appender-ref ref="STDOUT" />
+    </logger>
+</configuration>

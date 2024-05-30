@@ -26,7 +26,7 @@ class PetController
             return response
         }
 
-        @Get("{names}")
+        @Get("/{names}")
         fun getCuteness(
             @PathVariable("species") species: Species,
             @QueryValue("names") names: List<String>,
