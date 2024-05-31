@@ -5,3 +5,14 @@ services:
       - "4566:4566"
     environment:
       - SERVICES=dynamodb
+  postgres:
+#   DB hosted in the cloud? No worries, solutions like AWS Aurora will almost always conform to certain open source
+#   tooling like postgres, just pinned at a certain version
+    image: postgres:16
+    container_name: postgres
+    environment:
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: pet_Store
+    ports:
+      - "5432:5432"

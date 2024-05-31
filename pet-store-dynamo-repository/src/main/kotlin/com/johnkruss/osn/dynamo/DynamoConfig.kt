@@ -1,4 +1,4 @@
-package com.johnkruss.osn.repository
+package com.johnkruss.osn.dynamo
 
 open class DynamoConfig(
     var serviceUrl: String? = null,

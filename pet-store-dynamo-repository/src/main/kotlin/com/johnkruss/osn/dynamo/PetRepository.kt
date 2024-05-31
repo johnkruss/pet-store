@@ -1,4 +1,4 @@
-package com.johnkruss.osn.repository
+package com.johnkruss.osn.dynamo
 
 import com.johnkruss.osn.domain.Pet
 import com.johnkruss.osn.domain.Species
