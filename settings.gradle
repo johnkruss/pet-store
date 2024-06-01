@@ -4,4 +4,5 @@ include 'pet-store-api',
         'pet-store-dynamo-repository',
         'pet-store-service',
         'pet-store-sql-repository',
+        'pet-store-sql-repository-testcontainers',
         'pet-store-test-common'
