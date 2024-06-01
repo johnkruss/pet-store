@@ -1,8 +1,6 @@
 package com.johnkruss.osn.sql
 
 import com.johnkruss.osn.generatePet
-import com.zaxxer.hikari.HikariConfig
-import com.zaxxer.hikari.HikariDataSource
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.shouldBe
@@ -18,18 +16,8 @@ class GoodTestContainersTest : FreeSpec({
     lateinit var repository: PetSqlRepository
 
     beforeTest {
-        // Leverage the information pulled directly off our container so we don't need to set up in multiple places
-        val config =
-            HikariConfig().apply {
-                jdbcUrl = ProjectConfig.container.jdbcUrl
-                username = ProjectConfig.container.username
-                password = ProjectConfig.container.password
-            }
-        val dataSource = HikariDataSource(config)
-
-        FlywayMigrator(dataSource).run()
-
-        repository = PetSqlRepository(dataSource)
+        // Leverage the setup we did in ProjectConfig, our database is all ready to go
+        repository = PetSqlRepository(ProjectConfig.datasource)
     }
 
     "Add a pet, then call it back" {

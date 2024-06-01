@@ -31,6 +31,11 @@ class BadTestContainersTest : FreeSpec({
             }
         }
 
+    /*
+     *  This is spinning up and then killing a database container for each test in the file.
+     *  It will also open/close a new connection, as well as run flyway
+     * This is going to be very slow and expensive, but people do it by accident all the time
+     * */
     beforeTest {
         container.start()
 
