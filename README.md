@@ -8,7 +8,7 @@
 
 A repo to demonstrate code structures and testing practices that can effectively document and demonstrate code
 
-Project created with Kotlin, 2.0.0, Java 21, Micronaut 4.4.3, Kotest 5.9.0, and of course docker
+Project created with Kotlin 2.0.0, Java 21, Micronaut 4.4.3, Kotest 5.9.0, and of course docker
 
 To build/test - 
 

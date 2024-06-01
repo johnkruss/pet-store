@@ -18,6 +18,13 @@ dependencies {
     testImplementation(libs.mockk)
 }
 
+tasks.named<JavaExec>("run") {
+    environment("AWS_ACCESS_KEY_ID", "ACCESS_KEY")
+    environment("AWS_SECRET_ACCESS_KEY", "SECRET_KEY")
+    environment("AWS_SESSION_TOKEN", "TOKEN")
+    environment("AWS_REGION", "us-east-1")
+}
+
 tasks.withType<Test> {
     environment("AWS_ACCESS_KEY_ID", "ACCESS_KEY")
     environment("AWS_SECRET_ACCESS_KEY", "SECRET_KEY")

@@ -1,4 +1,4 @@
-package com.johnkruss.osn.repository
+package com.johnkruss.osn.dynamo
 
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient
 import software.amazon.awssdk.regions.Region

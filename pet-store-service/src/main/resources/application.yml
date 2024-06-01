@@ -1,0 +1,3 @@
+repository:
+  service-url: http://localhost:4566
+  table-name: pet_table
