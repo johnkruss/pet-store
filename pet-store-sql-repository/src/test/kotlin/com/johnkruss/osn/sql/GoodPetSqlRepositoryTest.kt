@@ -23,13 +23,14 @@ import java.util.UUID
 * Simply spin down your docker containers and bring them back up. Now try again!
 *
 * Another quick note: I find it easier to run containers without mounted data volumes so that every time they're spun
-* down and back up, all the db in them is wiped out
+* down and back up, all the data in them is wiped out
 * */
 class GoodPetSqlRepositoryTest : FreeSpec({
 
     lateinit var repository: PetSqlRepository
+    lateinit var dataSource: HikariDataSource
 
-    beforeTest {
+    beforeSpec {
         // Let's make a real connection, this could be parameterized for environment vars if needed
         val config =
             HikariConfig().apply {
@@ -37,7 +38,7 @@ class GoodPetSqlRepositoryTest : FreeSpec({
                 username = "username"
                 password = "password"
             }
-        val dataSource = HikariDataSource(config)
+        dataSource = HikariDataSource(config)
 
         /*
          * Look here, now we're testing our ACTUAL database migration code against an ACTUAL database!
@@ -45,6 +46,10 @@ class GoodPetSqlRepositoryTest : FreeSpec({
         FlywayMigrator(dataSource).run()
 
         repository = PetSqlRepository(dataSource)
+    }
+
+    afterSpec {
+        dataSource.close()
     }
 
     "Add a pet, then call it back" {
