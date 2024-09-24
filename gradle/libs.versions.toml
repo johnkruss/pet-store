@@ -19,6 +19,8 @@ hikari="5.1.0"
 micronaut="4.4.3"
 
 kotest="5.9.0"
+testcontainersExtension="2.0.2"
+testcontainers="1.19.8"
 mockk="1.12.5"
 micronautTest="4.3.0"
 
@@ -54,6 +56,9 @@ micronaut-test = { module = "io.micronaut.test:micronaut-test-kotest5", version.
 mockk = { module = "io.mockk:mockk", version.ref = "mockk"}
 kotest-assertions = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest"}
 kotest-runner = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest"}
+kotest-testcontainers = { module = "io.kotest.extensions:kotest-extensions-testcontainers", version.ref = "testcontainersExtension"}
+testcontainers-postgres = { module = "org.testcontainers:postgresql", version.ref = "testcontainers"}
+testcontainers = { module = "org.testcontainers:testcontainers", version.ref = "testcontainers"}
 
 [plugins]
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
