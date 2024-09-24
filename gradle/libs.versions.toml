@@ -1,17 +1,26 @@
 [versions]
-logback="1.2.3"
-slf4j="1.7.36"
-yaml="2.2"
-logbackEncoder="7.0.1"
-jackson="2.12.2"
-dynamo="2.17.5"
-micronaut="4.4.3"
 micronautPlugin="4.4.0"
 kotlin="2.0.0"
 ksp="2.0.0-1.0.21"
 spotless="6.25.0"
 
+logback="1.2.3"
+slf4j="1.7.36"
+yaml="2.2"
+logbackEncoder="7.0.1"
+jackson="2.12.2"
+
+dynamo="2.17.5"
+jooq="3.19.9"
+postgres="42.7.3"
+flyway="10.13.0"
+hikari="5.1.0"
+
+micronaut="4.4.3"
+
 kotest="5.9.0"
+testcontainersExtension="2.0.2"
+testcontainers="1.19.8"
 mockk="1.12.5"
 micronautTest="4.3.0"
 
@@ -29,6 +38,12 @@ jackson-module-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-
 
 dynamodb-enhanced = { module = "software.amazon.awssdk:dynamodb-enhanced", version.ref = "dynamo"}
 
+jooq = { module = "org.jooq:jooq", version.ref = "jooq" }
+postgres = { module = "org.postgresql:postgresql", version.ref = "postgres" }
+flyway = { module = "org.flywaydb:flyway-core", version.ref = "flyway" }
+flyway-postgres = { module = "org.flywaydb:flyway-database-postgresql", version.ref = "flyway" }
+hikari = { module = "com.zaxxer:HikariCP", version.ref = "hikari" }
+
 micronaut-inject-java = { module = "io.micronaut:micronaut-inject-java", version.ref = "micronaut"}
 micronaut-core = { module = "io.micronaut:micronaut-core", version.ref = "micronaut"}
 micronaut-runtime = { module = "io.micronaut:micronaut-runtime", version.ref = "micronaut"}
@@ -41,6 +56,9 @@ micronaut-test = { module = "io.micronaut.test:micronaut-test-kotest5", version.
 mockk = { module = "io.mockk:mockk", version.ref = "mockk"}
 kotest-assertions = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest"}
 kotest-runner = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest"}
+kotest-testcontainers = { module = "io.kotest.extensions:kotest-extensions-testcontainers", version.ref = "testcontainersExtension"}
+testcontainers-postgres = { module = "org.testcontainers:postgresql", version.ref = "testcontainers"}
+testcontainers = { module = "org.testcontainers:testcontainers", version.ref = "testcontainers"}
 
 [plugins]
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

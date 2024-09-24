@@ -2,8 +2,8 @@ package com.johnkruss.osn.service
 
 import com.johnkruss.osn.domain.Pet
 import com.johnkruss.osn.domain.Species
+import com.johnkruss.osn.dynamo.PetRepository
 import com.johnkruss.osn.exception.PetException
-import com.johnkruss.osn.repository.PetRepository
 import com.johnkruss.osn.response.CutenessResponse
 import com.johnkruss.osn.response.GetPetResponse
 import jakarta.inject.Inject
